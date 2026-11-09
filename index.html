@@ -29,9 +29,10 @@
   .langs strong { background: var(--ink); color: var(--white); }
   main { padding-top: 6px; padding-bottom: 12px; }
   .meta { color: var(--secondary); font-size: 14px; margin: 8px 0 14px; }
-  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 16px; }
-  .facts div { background: var(--white); border: 2px solid var(--ink); border-radius: 16px; padding: 10px 8px; text-align: center; font: 800 13px/1.25 var(--body); }
-  .facts em { display: block; font: 600 26px/1.1 var(--display); color: var(--aqua); font-style: normal; margin-bottom: 2px; }
+  .brief ul { list-style: none; padding: 0; margin: 0 0 8px; }
+  .brief li { position: relative; padding-left: 32px; margin: 0 0 8px; font-weight: 700; }
+  .brief li::before { content: ""; position: absolute; left: 0; top: .2em; width: 22px; height: 22px; border-radius: 50%; background: var(--aqua); }
+  .brief li::after { content: ""; position: absolute; left: 7px; top: calc(.2em + 5px); width: 6px; height: 10px; border: solid var(--white); border-width: 0 3px 3px 0; transform: rotate(45deg); }
   .intro { margin: 0 0 14px; }
   section { background: var(--white); border-radius: 20px; padding: 16px 18px 8px; margin: 0 0 12px; }
   h2 { font: 600 20px/1.25 var(--display); color: var(--aqua); margin: 0 0 6px; text-wrap: balance; }
@@ -40,7 +41,7 @@
   a { color: var(--aqua); font-weight: 800; }
   a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
   footer { padding-top: 6px; padding-bottom: 28px; font-size: 14px; color: var(--secondary); display: flex; flex-wrap: wrap; gap: 6px 16px; }
-  @media (max-width: 420px) { .name h1 { font-size: 26px; } .facts div { font-size: 12px; } }
+  @media (max-width: 420px) { .name h1 { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -54,7 +55,10 @@
   <nav class="langs" aria-label="Language"><strong>English</strong><a href="it.html" lang="it">Italiano</a><a href="es.html" lang="es">Español</a><a href="fr.html" lang="fr">Français</a><a href="de.html" lang="de">Deutsch</a><a href="pt.html" lang="pt">Português</a></nav>
 <main>
   <p class="meta">Last updated: 9 November 2026</p>
-    <div class="facts"><div><em>0</em>game accounts</div><div><em>0</em>servers of ours</div><div><em>1</em>purchase: Remove ads</div></div>
+    <section class="brief">
+      <h2>In short</h2>
+      <ul><li>No account to create</li><li>Your progress stays on your phone and in your account's backup (iCloud on iPhone, Google on Android)</li><li>Ads come from Google: you choose what they may use</li></ul>
+    </section>
   <p class="intro">This page explains what data the Next, Please! game for iPhone and Android uses, why, and who it is shared with.</p>
     <section>
       <h2>Who is responsible</h2>
@@ -62,7 +66,7 @@
     </section>
     <section>
       <h2>What the game saves</h2>
-      <p>Your progress (coins, levels, stars, upgrades) and settings (language, vibration) stay on your phone. On iPhone a copy also goes to your iCloud (an Apple service tied to your Apple Account), so you get your progress back on a new iPhone; you can turn it off in iPhone Settings → your name → iCloud. There is no game account and no server of ours, and we do not receive this data. You can delete it with "Reset progress" in the game's Settings, which also clears the copy in iCloud.</p>
+      <p>Your progress (coins, levels, stars, upgrades) and settings (language, vibration) stay on your phone. On iPhone a copy also goes to your iCloud (an Apple service tied to your Apple Account), so you get your progress back on a new iPhone; you can turn it off in iPhone Settings → your name → iCloud. On Android, if Google backup is on, the phone keeps a copy in your Google Account; you manage it in Settings → Google → Backup. There is no game account and no server of ours, and we do not receive this data. You can delete it with "Reset progress" in the game's Settings, which also clears the copy in iCloud.</p>
     </section>
     <section>
       <h2>Ads</h2>

@@ -29,9 +29,10 @@
   .langs strong { background: var(--ink); color: var(--white); }
   main { padding-top: 6px; padding-bottom: 12px; }
   .meta { color: var(--secondary); font-size: 14px; margin: 8px 0 14px; }
-  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 16px; }
-  .facts div { background: var(--white); border: 2px solid var(--ink); border-radius: 16px; padding: 10px 8px; text-align: center; font: 800 13px/1.25 var(--body); }
-  .facts em { display: block; font: 600 26px/1.1 var(--display); color: var(--aqua); font-style: normal; margin-bottom: 2px; }
+  .brief ul { list-style: none; padding: 0; margin: 0 0 8px; }
+  .brief li { position: relative; padding-left: 32px; margin: 0 0 8px; font-weight: 700; }
+  .brief li::before { content: ""; position: absolute; left: 0; top: .2em; width: 22px; height: 22px; border-radius: 50%; background: var(--aqua); }
+  .brief li::after { content: ""; position: absolute; left: 7px; top: calc(.2em + 5px); width: 6px; height: 10px; border: solid var(--white); border-width: 0 3px 3px 0; transform: rotate(45deg); }
   .intro { margin: 0 0 14px; }
   section { background: var(--white); border-radius: 20px; padding: 16px 18px 8px; margin: 0 0 12px; }
   h2 { font: 600 20px/1.25 var(--display); color: var(--aqua); margin: 0 0 6px; text-wrap: balance; }
@@ -40,7 +41,7 @@
   a { color: var(--aqua); font-weight: 800; }
   a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
   footer { padding-top: 6px; padding-bottom: 28px; font-size: 14px; color: var(--secondary); display: flex; flex-wrap: wrap; gap: 6px 16px; }
-  @media (max-width: 420px) { .name h1 { font-size: 26px; } .facts div { font-size: 12px; } }
+  @media (max-width: 420px) { .name h1 { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -54,7 +55,10 @@
   <nav class="langs" aria-label="Language"><a href="index.html" lang="en">English</a><a href="it.html" lang="it">Italiano</a><a href="es.html" lang="es">Español</a><strong>Français</strong><a href="de.html" lang="de">Deutsch</a><a href="pt.html" lang="pt">Português</a></nav>
 <main>
   <p class="meta">Dernière mise à jour : 9 novembre 2026</p>
-    <div class="facts"><div><em>0</em>compte de jeu</div><div><em>0</em>serveur à nous</div><div><em>1</em>achat : Supprimer la pub</div></div>
+    <section class="brief">
+      <h2>En bref</h2>
+      <ul><li>Aucun compte à créer</li><li>Ta progression reste sur ton téléphone et dans la sauvegarde de ton compte (iCloud sur iPhone, Google sur Android)</li><li>La pub vient de Google : tu choisis ce qu'elle peut utiliser</li></ul>
+    </section>
   <p class="intro">Cette page explique quelles données le jeu Next, Please! pour iPhone et Android utilise, pourquoi, et avec qui elles sont partagées.</p>
     <section>
       <h2>Responsable</h2>
@@ -62,7 +66,7 @@
     </section>
     <section>
       <h2>Ce que le jeu enregistre</h2>
-      <p>Ta progression (pièces, niveaux, étoiles, améliorations) et tes réglages (langue, vibration) restent sur ton téléphone. Sur iPhone, une copie va aussi dans ton iCloud (un service d'Apple lié à ton compte Apple), pour retrouver ta progression sur un nouvel iPhone ; tu peux le désactiver dans Réglages de l'iPhone → ton nom → iCloud. Il n'y a ni compte de jeu ni serveur à nous, et nous ne recevons pas ces données. Tu peux les supprimer avec « Effacer la progression » dans les Réglages du jeu, ce qui efface aussi la copie dans iCloud.</p>
+      <p>Ta progression (pièces, niveaux, étoiles, améliorations) et tes réglages (langue, vibration) restent sur ton téléphone. Sur iPhone, une copie va aussi dans ton iCloud (un service d'Apple lié à ton compte Apple), pour retrouver ta progression sur un nouvel iPhone ; tu peux le désactiver dans Réglages de l'iPhone → ton nom → iCloud. Sur Android, si la sauvegarde Google est activée, le téléphone en garde une copie dans ton compte Google ; cela se gère dans Paramètres → Google → Sauvegarde. Il n'y a ni compte de jeu ni serveur à nous, et nous ne recevons pas ces données. Tu peux les supprimer avec « Effacer la progression » dans les Réglages du jeu, ce qui efface aussi la copie dans iCloud.</p>
     </section>
     <section>
       <h2>Publicité</h2>

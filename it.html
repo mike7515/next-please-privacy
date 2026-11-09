@@ -29,9 +29,10 @@
   .langs strong { background: var(--ink); color: var(--white); }
   main { padding-top: 6px; padding-bottom: 12px; }
   .meta { color: var(--secondary); font-size: 14px; margin: 8px 0 14px; }
-  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 16px; }
-  .facts div { background: var(--white); border: 2px solid var(--ink); border-radius: 16px; padding: 10px 8px; text-align: center; font: 800 13px/1.25 var(--body); }
-  .facts em { display: block; font: 600 26px/1.1 var(--display); color: var(--aqua); font-style: normal; margin-bottom: 2px; }
+  .brief ul { list-style: none; padding: 0; margin: 0 0 8px; }
+  .brief li { position: relative; padding-left: 32px; margin: 0 0 8px; font-weight: 700; }
+  .brief li::before { content: ""; position: absolute; left: 0; top: .2em; width: 22px; height: 22px; border-radius: 50%; background: var(--aqua); }
+  .brief li::after { content: ""; position: absolute; left: 7px; top: calc(.2em + 5px); width: 6px; height: 10px; border: solid var(--white); border-width: 0 3px 3px 0; transform: rotate(45deg); }
   .intro { margin: 0 0 14px; }
   section { background: var(--white); border-radius: 20px; padding: 16px 18px 8px; margin: 0 0 12px; }
   h2 { font: 600 20px/1.25 var(--display); color: var(--aqua); margin: 0 0 6px; text-wrap: balance; }
@@ -40,7 +41,7 @@
   a { color: var(--aqua); font-weight: 800; }
   a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
   footer { padding-top: 6px; padding-bottom: 28px; font-size: 14px; color: var(--secondary); display: flex; flex-wrap: wrap; gap: 6px 16px; }
-  @media (max-width: 420px) { .name h1 { font-size: 26px; } .facts div { font-size: 12px; } }
+  @media (max-width: 420px) { .name h1 { font-size: 26px; } }
 </style>
 </head>
 <body>
@@ -54,7 +55,10 @@
   <nav class="langs" aria-label="Language"><a href="index.html" lang="en">English</a><strong>Italiano</strong><a href="es.html" lang="es">Español</a><a href="fr.html" lang="fr">Français</a><a href="de.html" lang="de">Deutsch</a><a href="pt.html" lang="pt">Português</a></nav>
 <main>
   <p class="meta">Ultimo aggiornamento: 9 novembre 2026</p>
-    <div class="facts"><div><em>0</em>account di gioco</div><div><em>0</em>server nostri</div><div><em>1</em>acquisto: Rimuovi pubblicità</div></div>
+    <section class="brief">
+      <h2>In breve</h2>
+      <ul><li>Nessun account da creare</li><li>I progressi restano sul telefono e nel backup del tuo account (iCloud su iPhone, Google su Android)</li><li>La pubblicità è di Google: scegli tu cosa può usare</li></ul>
+    </section>
   <p class="intro">Questa pagina spiega quali dati usa il gioco Next, Please! per iPhone e Android, perché e con chi li condivide.</p>
     <section>
       <h2>Chi è il titolare</h2>
@@ -62,7 +66,7 @@
     </section>
     <section>
       <h2>Cosa salva il gioco</h2>
-      <p>I progressi (monete, livelli, stelle, potenziamenti) e le impostazioni (lingua, vibrazione) restano sul tuo telefono. Su iPhone una copia va anche sul tuo iCloud (servizio di Apple, legato al tuo Account Apple), così ritrovi i progressi su un nuovo iPhone; puoi spegnerlo in Impostazioni dell'iPhone → il tuo nome → iCloud. Non c'è un account del gioco, non c'è un nostro server e non riceviamo questi dati. Li cancelli con "Azzera i progressi" nelle Impostazioni del gioco, che cancella anche la copia su iCloud.</p>
+      <p>I progressi (monete, livelli, stelle, potenziamenti) e le impostazioni (lingua, vibrazione) restano sul tuo telefono. Su iPhone una copia va anche sul tuo iCloud (servizio di Apple, legato al tuo Account Apple), così ritrovi i progressi su un nuovo iPhone; puoi spegnerlo in Impostazioni dell'iPhone → il tuo nome → iCloud. Su Android, se il backup di Google è attivo, il telefono ne fa una copia nel tuo account Google; si gestisce in Impostazioni → Google → Backup. Non c'è un account del gioco, non c'è un nostro server e non riceviamo questi dati. Li cancelli con "Azzera i progressi" nelle Impostazioni del gioco, che cancella anche la copia su iCloud.</p>
     </section>
     <section>
       <h2>Pubblicità</h2>
