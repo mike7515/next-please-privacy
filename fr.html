@@ -2,70 +2,111 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Next, Please! · Politique de confidentialité</title>
+<link rel="icon" href="icon.png">
 <style>
-  :root { --ink: #0b2f3a; --aqua: #0a6f7c; --wall: #bfe8ee; --white: #ffffff; --secondary: #2f5360; }
-  body { margin: 0; background: var(--wall); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  main { max-width: 720px; margin: 24px auto; padding: 24px max(20px, env(safe-area-inset-left)); background: var(--white); border: 3px solid var(--ink); border-radius: 24px; }
-  h1 { font-size: 28px; line-height: 1.2; margin: 0 0 4px; }
-  h2 { font-size: 19px; margin: 28px 0 6px; color: var(--aqua); }
-  p, li { color: var(--ink); }
-  .meta { color: var(--secondary); font-size: 14px; margin: 0 0 18px; }
-  .lang { font-size: 14px; margin: 0 0 14px; color: var(--secondary); }
-  a { color: var(--aqua); font-weight: 600; }
-  ul { padding-left: 22px; }
+  @font-face { font-family: "Fredoka"; src: url("fonts/Fredoka.woff") format("woff"); font-weight: 300 700; font-display: swap; }
+  @font-face { font-family: "Nunito"; src: url("fonts/Nunito.woff") format("woff"); font-weight: 200 1000; font-display: swap; }
+  /* game palette (lib/game/base.dart): ink, aqua, gold, tile, success */
+  :root { --ink: #0b2f3a; --aqua: #0a6f7c; --gold: #f5b82e; --tile: #ddf3f2; --white: #ffffff; --secondary: #2f5360; --free: #3fbf8a;
+          --display: "Fredoka", "Nunito", system-ui, sans-serif; --body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--tile); color: var(--ink); font: 17px/1.6 var(--body); }
+  .door { background: var(--aqua); color: var(--white); border-bottom: 6px solid var(--ink); position: relative; }
+  .door-in, .langs, main, footer { max-width: 720px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
+  .door-in { padding-top: 22px; padding-bottom: 30px; }
+  .plate { display: inline-block; font: 900 12px/1 var(--body); letter-spacing: .12em; background: var(--free); color: var(--ink); padding: 7px 13px; border-radius: 999px; border: 2px solid var(--ink); }
+  .name { display: flex; align-items: center; gap: 14px; margin-top: 16px; }
+  .name img { width: 60px; height: 60px; border-radius: 15px; border: 2px solid var(--ink); flex: none; }
+  .name h1 { font: 700 30px/1 var(--display); margin: 0; }
+  .name p { font: 600 17px/1.3 var(--display); color: var(--gold); margin: 6px 0 0; }
+  .handle { position: absolute; right: max(24px, env(safe-area-inset-right)); bottom: -19px; width: 16px; height: 34px; border-radius: 8px; background: var(--gold); border: 2px solid var(--ink); }
+  .langs { display: flex; flex-wrap: wrap; gap: 4px; padding-top: 18px; padding-bottom: 4px; }
+  .langs a, .langs strong { font: 800 14px/1 var(--body); padding: 8px 12px; border-radius: 999px; text-decoration: none; }
+  .langs a { color: var(--secondary); }
+  .langs a:hover, .langs a:focus-visible { background: var(--white); }
+  .langs strong { background: var(--ink); color: var(--white); }
+  main { padding-top: 6px; padding-bottom: 12px; }
+  .meta { color: var(--secondary); font-size: 14px; margin: 8px 0 14px; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 0 16px; }
+  .facts div { background: var(--white); border: 2px solid var(--ink); border-radius: 16px; padding: 10px 8px; text-align: center; font: 800 13px/1.25 var(--body); }
+  .facts em { display: block; font: 600 26px/1.1 var(--display); color: var(--aqua); font-style: normal; margin-bottom: 2px; }
+  .intro { margin: 0 0 14px; }
+  section { background: var(--white); border-radius: 20px; padding: 16px 18px 8px; margin: 0 0 12px; }
+  h2 { font: 600 20px/1.25 var(--display); color: var(--aqua); margin: 0 0 6px; text-wrap: balance; }
+  p, li { margin: 0 0 10px; }
+  ul { padding-left: 22px; margin: 0 0 10px; }
+  a { color: var(--aqua); font-weight: 800; }
+  a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+  footer { padding-top: 6px; padding-bottom: 28px; font-size: 14px; color: var(--secondary); display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  @media (max-width: 420px) { .name h1 { font-size: 26px; } .facts div { font-size: 12px; } }
 </style>
 </head>
 <body>
+<header class="door">
+  <div class="door-in">
+    <span class="plate">LIBRE</span>
+    <div class="name"><img src="icon.png" alt="" width="60" height="60"><div><h1>Next, Please!</h1><p>Politique de confidentialité</p></div></div>
+  </div>
+  <span class="handle" aria-hidden="true"></span>
+</header>
+  <nav class="langs" aria-label="Language"><a href="index.html" lang="en">English</a><a href="it.html" lang="it">Italiano</a><a href="es.html" lang="es">Español</a><strong>Français</strong><a href="de.html" lang="de">Deutsch</a><a href="pt.html" lang="pt">Português</a></nav>
 <main>
-  <nav class="lang"><a href="index.html">English</a> · <a href="it.html">Italiano</a> · <a href="es.html">Español</a> · <strong>Français</strong> · <a href="de.html">Deutsch</a> · <a href="pt.html">Português</a></nav>
-  <h1>Politique de confidentialité de Next, Please!</h1>
   <p class="meta">Dernière mise à jour : 9 novembre 2026</p>
-
-  <p>Cette page explique quelles données le jeu Next, Please! pour iPhone et Android utilise, pourquoi, et avec qui elles sont partagées.</p>
-
-  <h2>Responsable</h2>
-  <p>Michele Melluso, développeur indépendant. Contact : <a href="mailto:mike7515.dev@gmail.com">mike7515.dev@gmail.com</a></p>
-
-  <h2>Ce que le jeu enregistre</h2>
-  <p>Ta progression (pièces, niveaux, étoiles, améliorations) et tes réglages (langue, vibration) restent sur ton téléphone. Sur iPhone, une copie va aussi dans ton iCloud (un service d'Apple lié à ton compte Apple), pour retrouver ta progression sur un nouvel iPhone ; tu peux le désactiver dans Réglages de l'iPhone → ton nom → iCloud. Il n'y a ni compte de jeu ni serveur à nous, et nous ne recevons pas ces données. Tu peux les supprimer avec « Effacer la progression » dans les Réglages du jeu, ce qui efface aussi la copie dans iCloud.</p>
-
-  <h2>Publicité</h2>
-  <p>Le jeu affiche des publicités vidéo de <strong>Google AdMob</strong> (Google Ireland Limited pour les personnes dans l'Espace économique européen et en Suisse, Google LLC ailleurs). Pour afficher et mesurer les publicités et éviter la fraude, Google peut collecter :</p>
-  <ul>
-    <li>l'identifiant publicitaire du téléphone (IDFA sur iPhone, identifiant publicitaire sur Android), seulement si tu l'autorises ;</li>
-    <li>ton adresse IP et la position approximative qu'elle révèle ;</li>
-    <li>des informations sur l'appareil (modèle, système d'exploitation, langue) ;</li>
-    <li>ta façon d'interagir avec les publicités (par exemple si une vidéo a été regardée jusqu'au bout).</li>
-  </ul>
-  <p>Comment Google utilise ces données : <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a> et <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
-  <p>Pour trouver une publicité adaptée, AdMob peut transmettre la demande à d'autres régies (médiation), qui peuvent collecter les mêmes types de données selon les mêmes choix de consentement :</p>
-  <ul>
-    <li><strong>AppLovin</strong>: <a href="https://www.applovin.com/privacy/">applovin.com/privacy</a></li>
-    <li><strong>Unity Ads</strong>: <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">unity.com/legal/game-player-and-app-user-privacy-policy</a></li>
-    <li><strong>Liftoff</strong>: <a href="https://liftoff.ai/privacy-policy/">liftoff.ai/privacy-policy</a></li>
-  </ul>
-
-  <h2>Tes choix</h2>
-  <ul>
-    <li><strong>En Europe et au Royaume-Uni</strong>, une fenêtre de Google te demande ton consentement à la première ouverture du jeu. Si tu acceptes, les publicités peuvent être personnalisées. Si tu refuses, tu vois des publicités non personnalisées ou limitées et le jeu fonctionne de la même façon. Tu peux changer ton choix à tout moment dans Réglages → Confidentialité → Choix publicitaires.</li>
-    <li><strong>Sur iPhone</strong>, Apple te demande si l'app peut te suivre. Si tu refuses, les régies ne reçoivent pas l'identifiant publicitaire. Tu peux le modifier dans Réglages de l'iPhone → Confidentialité et sécurité → Suivi.</li>
-    <li><strong>Sur Android</strong>, tu peux réinitialiser ou supprimer l'identifiant publicitaire dans les paramètres du téléphone, sous Google → Annonces.</li>
-  </ul>
-  <p>La base légale des publicités personnalisées est ton consentement (art. 6, paragraphe 1, point a, du RGPD).</p>
-
-  <h2>Achats</h2>
-  <p>Les achats dans le jeu, comme « Supprimer la pub », passent par l'App Store d'Apple ou Google Play. Nous ne recevons pas tes données de paiement : savoir ce que tu as acheté sert seulement à le débloquer.</p>
-
-  <h2>Enfants</h2>
-  <p>Le jeu ne s'adresse pas aux enfants de moins de 13 ans et nous ne collectons pas sciemment de données les concernant.</p>
-
-  <h2>Tes droits</h2>
-  <p>Si tu vis dans l'Union européenne, tu as le droit d'accéder à tes données, de les rectifier et de les effacer, d'en limiter l'usage ou de t'y opposer, et de retirer ton consentement à tout moment. Comme nous ne gardons aucune donnée sur toi, pour les données publicitaires ce sont les outils ci-dessus et les pages des régies qui s'appliquent. Pour toute question, écris à <a href="mailto:mike7515.dev@gmail.com">mike7515.dev@gmail.com</a>. Tu peux aussi saisir ton autorité de protection des données (en Italie, le <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a> ; en France, la <a href="https://www.cnil.fr">CNIL</a>).</p>
-
-  <h2>Modifications</h2>
-  <p>Si cette page change, la date en haut est mise à jour.</p>
+    <div class="facts"><div><em>0</em>compte de jeu</div><div><em>0</em>serveur à nous</div><div><em>1</em>achat : Supprimer la pub</div></div>
+  <p class="intro">Cette page explique quelles données le jeu Next, Please! pour iPhone et Android utilise, pourquoi, et avec qui elles sont partagées.</p>
+    <section>
+      <h2>Responsable</h2>
+      <p>Michele Melluso, développeur indépendant. Contact : <a href="mailto:mike7515.dev@gmail.com">mike7515.dev@gmail.com</a></p>
+    </section>
+    <section>
+      <h2>Ce que le jeu enregistre</h2>
+      <p>Ta progression (pièces, niveaux, étoiles, améliorations) et tes réglages (langue, vibration) restent sur ton téléphone. Sur iPhone, une copie va aussi dans ton iCloud (un service d'Apple lié à ton compte Apple), pour retrouver ta progression sur un nouvel iPhone ; tu peux le désactiver dans Réglages de l'iPhone → ton nom → iCloud. Il n'y a ni compte de jeu ni serveur à nous, et nous ne recevons pas ces données. Tu peux les supprimer avec « Effacer la progression » dans les Réglages du jeu, ce qui efface aussi la copie dans iCloud.</p>
+    </section>
+    <section>
+      <h2>Publicité</h2>
+      <p>Le jeu affiche des publicités vidéo de <strong>Google AdMob</strong> (Google Ireland Limited pour les personnes dans l'Espace économique européen et en Suisse, Google LLC ailleurs). Pour afficher et mesurer les publicités et éviter la fraude, Google peut collecter :</p>
+      <ul>
+        <li>l'identifiant publicitaire du téléphone (IDFA sur iPhone, identifiant publicitaire sur Android), seulement si tu l'autorises ;</li>
+        <li>ton adresse IP et la position approximative qu'elle révèle ;</li>
+        <li>des informations sur l'appareil (modèle, système d'exploitation, langue) ;</li>
+        <li>ta façon d'interagir avec les publicités (par exemple si une vidéo a été regardée jusqu'au bout).</li>
+      </ul>
+      <p>Comment Google utilise ces données : <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a> et <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+      <p>Pour trouver une publicité adaptée, AdMob peut transmettre la demande à d'autres régies (médiation), qui peuvent collecter les mêmes types de données selon les mêmes choix de consentement :</p>
+      <ul>
+        <li><strong>AppLovin</strong>: <a href="https://www.applovin.com/privacy/">applovin.com/privacy</a></li>
+        <li><strong>Unity Ads</strong>: <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">unity.com/legal/game-player-and-app-user-privacy-policy</a></li>
+        <li><strong>Liftoff</strong>: <a href="https://liftoff.ai/privacy-policy/">liftoff.ai/privacy-policy</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Tes choix</h2>
+      <ul>
+        <li><strong>En Europe et au Royaume-Uni</strong>, une fenêtre de Google te demande ton consentement à la première ouverture du jeu. Si tu acceptes, les publicités peuvent être personnalisées. Si tu refuses, tu vois des publicités non personnalisées ou limitées et le jeu fonctionne de la même façon. Tu peux changer ton choix à tout moment dans Réglages → Confidentialité → Choix publicitaires.</li>
+        <li><strong>Sur iPhone</strong>, Apple te demande si l'app peut te suivre. Si tu refuses, les régies ne reçoivent pas l'identifiant publicitaire. Tu peux le modifier dans Réglages de l'iPhone → Confidentialité et sécurité → Suivi.</li>
+        <li><strong>Sur Android</strong>, tu peux réinitialiser ou supprimer l'identifiant publicitaire dans les paramètres du téléphone, sous Google → Annonces.</li>
+      </ul>
+      <p>La base légale des publicités personnalisées est ton consentement (art. 6, paragraphe 1, point a, du RGPD).</p>
+    </section>
+    <section>
+      <h2>Achats</h2>
+      <p>Les achats dans le jeu, comme « Supprimer la pub », passent par l'App Store d'Apple ou Google Play. Nous ne recevons pas tes données de paiement : savoir ce que tu as acheté sert seulement à le débloquer.</p>
+    </section>
+    <section>
+      <h2>Enfants</h2>
+      <p>Le jeu ne s'adresse pas aux enfants de moins de 13 ans et nous ne collectons pas sciemment de données les concernant.</p>
+    </section>
+    <section>
+      <h2>Tes droits</h2>
+      <p>Si tu vis dans l'Union européenne, tu as le droit d'accéder à tes données, de les rectifier et de les effacer, d'en limiter l'usage ou de t'y opposer, et de retirer ton consentement à tout moment. Comme nous ne gardons aucune donnée sur toi, pour les données publicitaires ce sont les outils ci-dessus et les pages des régies qui s'appliquent. Pour toute question, écris à <a href="mailto:mike7515.dev@gmail.com">mike7515.dev@gmail.com</a>. Tu peux aussi saisir ton autorité de protection des données (en Italie, le <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a> ; en France, la <a href="https://www.cnil.fr">CNIL</a>).</p>
+    </section>
+    <section>
+      <h2>Modifications</h2>
+      <p>Si cette page change, la date en haut est mise à jour.</p>
+    </section>
 </main>
+<footer><a href="support-fr.html">Assistance</a><span>Next, Please! · <a href="https://mike7515.github.io/">Michele Melluso</a></span></footer>
 </body>
 </html>
